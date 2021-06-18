@@ -1,0 +1,21 @@
+{% extends "content/base.html" %}
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+{% for note in notes %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ note.author }}</a>
+              <small class="text-muted">{{ note.date_posted|date:"F d, Y" }}</small>
+            </div>
+            <h2><a class="article-title" href="{% url 'note-detail' note.id %}">{{ note.title }}</a></h2>
+            <p class="article-content">{{ note.content }}</p>
+          </div>
+        </article>
+    {% endfor %}
+
+
+
+{% endblock %}
